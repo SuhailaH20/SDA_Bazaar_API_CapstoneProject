@@ -13,19 +13,19 @@ import static io.restassured.RestAssured.given;
 
 public class apiBazaar {
 
-    public static RequestSpecification spec() {
+    public static RequestSpecification spec(String email, String password) {
         return new RequestSpecBuilder()
                 .setBaseUri(ConfigReader.getApiBaseUrl())
                 .setContentType(ContentType.JSON)
                 .addHeader("Accept", "application/json")
-                .addHeader("Authorization", "Bearer " + getToken())
+                .addHeader("Authorization", "Bearer " + getToken(email, password))
                 .build();
     }
 
-    private static String getToken() {
+    private static String getToken(String email, String password) {
         Map payload = new HashMap();
-        payload.put("email", ConfigReader.getAdminEmail());
-        payload.put("password", ConfigReader.getDefaultPassword());
+        payload.put("email", email);
+        payload.put("password", password);
         Response response = given()
                 .body(payload)
                 .contentType(ContentType.JSON)
@@ -34,4 +34,3 @@ public class apiBazaar {
     }
 
 }
-/////ssdd
