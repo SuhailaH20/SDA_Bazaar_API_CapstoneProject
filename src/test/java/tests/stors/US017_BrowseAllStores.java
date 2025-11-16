@@ -2,7 +2,6 @@ package tests.stors;
 
 import base_urls.apiBazaar;
 import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import utilities.ConfigReader;
