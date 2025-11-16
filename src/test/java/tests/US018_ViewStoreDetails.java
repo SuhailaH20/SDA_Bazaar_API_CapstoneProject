@@ -1,4 +1,4 @@
-package tests.stors;
+package tests;
 
 import base_urls.apiBazaar;
 import io.restassured.path.json.JsonPath;

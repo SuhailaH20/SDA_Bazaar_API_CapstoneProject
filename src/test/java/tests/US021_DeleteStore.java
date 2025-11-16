@@ -1,9 +1,8 @@
-package tests.stors;
+package tests;
 
 import base_urls.apiBazaar;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utilities.ConfigReader;
