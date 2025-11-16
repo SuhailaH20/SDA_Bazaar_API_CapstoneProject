@@ -60,7 +60,7 @@ public class US017_BrowseAllStores extends apiBazaar {//2Bug
                 .time(lessThan(2000L));
 
     }
-//[US17_TC004][Negative]Customer Token #Bug
+//[US17_TC004]#Bug
     @Test
     public void testRequestFailsWithInvalidBearertoken() {
         Response response = given(spec(ConfigReader.getCustomerEmail(),ConfigReader.getDefaultPassword())).get("/stores");
@@ -72,7 +72,7 @@ public class US017_BrowseAllStores extends apiBazaar {//2Bug
     }
 
 
-    //[US17_TC004][Negative]StoreManager Token #Bug
+    //[US17_TC004]#Bug
     @Test
     public void testRequestFailsWithInvalidBearertoken2() {
         Response response = given(spec(ConfigReader.getStoreManagerEmail(),ConfigReader.getDefaultPassword())).get("/stores");

@@ -48,9 +48,7 @@ public class US018_ViewStoreDetails extends apiBazaar {
     }
 
 
-    //[US18_TC003] [Negative] Verify with Invalid Store ID Format
-
-
+    //[US18_TC003]
     @Test
     public void testWithInvalidStoreIDFormat() {
 
