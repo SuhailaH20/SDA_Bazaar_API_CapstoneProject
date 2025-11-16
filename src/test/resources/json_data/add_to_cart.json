@@ -1,0 +1,32 @@
+{
+  "valid_product": {
+    "product_id": 398
+  },
+  "valid_product_qty": {
+    "product_id": 211,
+    "quantity": 3
+  },
+  "missing_id": {},
+  "invalid_id_type": {
+    "product_id": "abc"
+  },
+  "non_existing_id": {
+    "product_id": 99999
+  },
+  "qty_zero": {
+    "product_id": 211,
+    "quantity": 0
+  },
+  "qty_negative": {
+    "product_id": 211,
+    "quantity": -1
+  },
+  "qty_string": {
+    "product_id": 211,
+    "quantity": "three"
+  },
+  "qty_null": {
+    "product_id": 211,
+    "quantity": null
+  }
+}

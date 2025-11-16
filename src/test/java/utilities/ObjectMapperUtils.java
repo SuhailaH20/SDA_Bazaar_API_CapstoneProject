@@ -25,7 +25,7 @@ public class ObjectMapperUtils {
     public static JsonNode getJsonNode(String fileName) {
 
         try {
-            return new ObjectMapper().readTree(new File("src/test/resources/test_data/" + fileName + ".json"));
+            return new ObjectMapper().readTree(new File("src/test/resources/json_data/" + fileName + ".json"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
