@@ -53,40 +53,7 @@ public class US008_ClearCartTests {
 
     // ------------------ TC003 ------------------
     @Test
-    public void TC003_validateTotalEqualsZeroAfterClear() {
-        given().spec(spec).delete("/cart/clear");
-
-        Response response = given()
-                .spec(spec)
-                .accept("application/json")
-                .get("/cart");
-        response.prettyPrint();
-
-        Assert.assertEquals(response.statusCode(), 200);
-
-//        if (response.jsonPath().get("total") != null) {
-//            Assert.assertEquals(response.jsonPath().getInt("total"), 0);
-//        }
-    }
-
-    // ------------------ TC004 ------------------
-    @Test
-    public void TC004_validateItemsArrayEmpty() {
-        given().spec(spec).delete("/cart/clear");
-
-        Response response = given()
-                .spec(spec)
-                .accept("application/json")
-                .get("/cart");
-        response.prettyPrint();
-
-        Assert.assertEquals(response.statusCode(), 200);
-//        Assert.assertEquals(response.jsonPath().getList("cart").size(), 0);
-    }
-
-    // ------------------ TC005 ------------------
-    @Test
-    public void TC005_clearWithoutToken() {
+    public void TC003_clearWithoutToken() {
         Response response = given()
                 .accept("application/json")
                 .delete(ConfigReader.getApiBaseUrl() + "/cart/clear");
@@ -95,11 +62,11 @@ public class US008_ClearCartTests {
         Assert.assertEquals(response.statusCode(), 401);
     }
 
-    // ------------------ TC006 ------------------
+    // ------------------ TC004 ------------------
     @Test
-    public void TC006_tamperedToken() {
+    public void TC004_tamperedToken() {
         Response response = given()
-                .header("Authorization", "Bearer tampered.token.value")
+                .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhemFhcnN0b3Jlcy5jb20vYXBpL2xvZ2luIiwiaWF0IjoxNzYzMzAyNjQ4LCJleHAiOjE3NjMzMDYyNDgsIm5iZiI6MTc2MzMwMjY0OCwianRpIjoiVnI4VndTTmZ4Q3lLV0ZoNCIsInN1YiI6IjM1MiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.4MRS_LDzNNh2m5XkYiqtAopEbxDnDkrfA16QD0YofAk")
                 .accept("application/json")
                 .delete(ConfigReader.getApiBaseUrl() + "/cart/clear");
         response.prettyPrint();

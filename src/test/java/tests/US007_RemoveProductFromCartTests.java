@@ -40,10 +40,7 @@ public class US007_RemoveProductFromCartTests {
         response.prettyPrint();
 
         Assert.assertEquals(response.statusCode(), 200);
-
-//        if (response.jsonPath().get("cart") != null) {
-//            Assert.assertEquals(response.jsonPath().getList("cart").size(), 0);
-//        }
+        Assert.assertTrue(response.jsonPath().getBoolean("success"));
     }
 
     // ------------------ TC003 ------------------
@@ -123,7 +120,7 @@ public class US007_RemoveProductFromCartTests {
     @Test
     public void TC010_tamperedToken() {
         Response response = given()
-                .header("Authorization", "Bearer tampered.token.value")
+                .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhemFhcnN0b3Jlcy5jb20vYXBpL2xvZ2luIiwiaWF0IjoxNzYzMzAyNjQ4LCJleHAiOjE3NjMzMDYyNDgsIm5iZiI6MTc2MzMwMjY0OCwianRpIjoiVnI4VndTTmZ4Q3lLV0ZoNCIsInN1YiI6IjM1MiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.4MRS_LDzNNh2m5XkYiqtAopEbxDnDkrfA16QD0YofAk")
                 .accept("application/json")
                 .delete(ConfigReader.getApiBaseUrl() + "/cart/211");
         response.prettyPrint();

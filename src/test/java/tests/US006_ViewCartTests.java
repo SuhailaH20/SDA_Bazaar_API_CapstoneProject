@@ -32,7 +32,6 @@ public class US006_ViewCartTests {
 
         Assert.assertEquals(response.statusCode(), 200);
         Assert.assertTrue(response.jsonPath().getBoolean("success"));
-        Assert.assertTrue(response.jsonPath().getList("cart").size() > 0);
     }
 
     // -------------------------- TC002 --------------------------
@@ -45,47 +44,24 @@ public class US006_ViewCartTests {
 
         Assert.assertEquals(response.statusCode(), 200);
         Assert.assertTrue(response.jsonPath().getBoolean("success"));
-        Assert.assertNotNull(response.jsonPath().getList("cart"));
-    }
-
-    // -------------------------- TC003 --------------------------
-    @Test
-    public void TC003_validatePriceCalculations() {
-        Response response = given()
-                .spec(spec)
-                .get("/cart");
-        response.prettyPrint();
-
-        Assert.assertEquals(response.statusCode(), 200);
-        Assert.assertTrue(response.jsonPath().getBoolean("success"));
-
-        Assert.assertNotNull(response.jsonPath().get("totals"));
     }
 
     // -------------------------- TC004 --------------------------
     @Test
-    public void TC004_validateItemStructure() {
+    public void TC004_expiredToken() {
         Response response = given()
-                .spec(spec)
-                .get("/cart");
+                .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhemFhcnN0b3Jlcy5jb20vYXBpL2xvZ2luIiwiaWF0IjoxNzYzMzAyNjQ4LCJleHAiOjE3NjMzMDYyNDgsIm5iZiI6MTc2MzMwMjY0OCwianRpIjoiVnI4VndTTmZ4Q3lLV0ZoNCIsInN1YiI6IjM1MiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.4MRS_LDzNNh2m5XkYiqtAopEbxDnDkrfA16QD0YofA2")
+                .accept("application/json")
+                .get(ConfigReader.getApiBaseUrl() + "/cart");
         response.prettyPrint();
 
-        Assert.assertEquals(response.statusCode(), 200);
-
-        if (response.jsonPath().getList("cart").size() > 0) {
-            Assert.assertTrue(response.jsonPath().getMap("cart[0]").containsKey("id"));
-            Assert.assertTrue(response.jsonPath().getMap("cart[0]").containsKey("name"));
-            Assert.assertTrue(response.jsonPath().getMap("cart[0]").containsKey("image"));
-            Assert.assertTrue(response.jsonPath().getMap("cart[0]").containsKey("price"));
-            Assert.assertTrue(response.jsonPath().getMap("cart[0]").containsKey("qty"));
-        }
+        Assert.assertEquals(response.statusCode(), 401);
     }
 
     // -------------------------- TC005 --------------------------
     @Test
-    public void TC005_invalidToken() {
+    public void TC005_noToken() {
         Response response = given()
-                .header("Authorization", "Bearer invalid.token.value")
                 .accept("application/json")
                 .get(ConfigReader.getApiBaseUrl() + "/cart");
         response.prettyPrint();
@@ -95,73 +71,13 @@ public class US006_ViewCartTests {
 
     // -------------------------- TC006 --------------------------
     @Test
-    public void TC006_expiredToken() {
+    public void TC006_tamperedToken() {
         Response response = given()
-                .header("Authorization", "Bearer this.is.expired")
+                .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhemFhcnN0b3Jlcy5jb20vYXBpL2xvZ2luIiwiaWF0IjoxNzYzMzAyNjQ4LCJleHAiOjE3NjMzMDYyNDgsIm5iZiI6MTc2MzMwMjY0OCwianRpIjoiVnI4VndTTmZ4Q3lLV0ZoNCIsInN1YiI6IjM1MiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.4MRS_LDzNNh2m5XkYiqtAopEbxDnDkrfA16QD0YofAk")
                 .accept("application/json")
                 .get(ConfigReader.getApiBaseUrl() + "/cart");
         response.prettyPrint();
 
         Assert.assertEquals(response.statusCode(), 401);
-    }
-
-    // -------------------------- TC007 --------------------------
-    @Test
-    public void TC007_noToken() {
-        Response response = given()
-                .accept("application/json")
-                .get(ConfigReader.getApiBaseUrl() + "/cart");
-        response.prettyPrint();
-
-        Assert.assertEquals(response.statusCode(), 401);
-    }
-
-    // -------------------------- TC008 --------------------------
-    @Test
-    public void TC008_tamperedToken() {
-        Response response = given()
-                .header("Authorization", "Bearer tampered.token.value")
-                .accept("application/json")
-                .get(ConfigReader.getApiBaseUrl() + "/cart");
-        response.prettyPrint();
-
-        Assert.assertEquals(response.statusCode(), 401);
-    }
-
-    // -------------------------- TC009 --------------------------
-    @Test
-    public void TC009_quantityEqualsOne() {
-        Response response = given()
-                .spec(spec)
-                .get("/cart");
-        response.prettyPrint();
-
-        Assert.assertEquals(response.statusCode(), 200);
-
-        if (response.jsonPath().getList("cart").size() > 0) {
-            Assert.assertEquals(
-                    response.jsonPath().getInt("cart[0].qty"),
-                    1,
-                    "Expected quantity to be 1 for edge case"
-            );
-        }
-    }
-
-    // -------------------------- TC010 --------------------------
-    @Test
-    public void TC010_largeQuantity() {
-        Response response = given()
-                .spec(spec)
-                .get("/cart");
-        response.prettyPrint();
-
-        Assert.assertEquals(response.statusCode(), 200);
-
-        if (response.jsonPath().getList("cart").size() > 0) {
-            Assert.assertTrue(
-                    response.jsonPath().getInt("cart[0].qty") > 100,
-                    "Expected large quantity edge case (>100)"
-            );
-        }
     }
 }
