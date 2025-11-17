@@ -1,0 +1,57 @@
+{
+  "valid_update": {
+    "name": "Product Name",
+    "price": 9.99,
+    "stock": 50,
+    "sku": "SKU12345",
+    "category_id": 1,
+    "manufacturer": "Manufacturer Name",
+    "image_url": "images/image123.jpg",
+    "discount": 0.5,
+    "description": "Product description"
+  },
+  "update_stock": {
+    "name": "Product Name",
+    "price": 9.99,
+    "stock": 60,
+    "sku": "SKU12345",
+    "category_id": 1,
+    "manufacturer": "Manufacturer Name",
+    "image_url": "images/image123.jpg",
+    "discount": 0.5,
+    "description": "Product description"
+  },
+  "invalid_price_update": {
+    "name": "Product Name",
+    "price": -9.939,
+    "stock": 60,
+    "sku": "SKU12345",
+    "category_id": 1,
+    "manufacturer": "Manufacturer Name",
+    "image_url": "images/image123.jpg",
+    "discount": 0.5,
+    "description": "Product description"
+  },
+  "update_without_token": {
+    "name": "Product Name",
+    "price": 9.99,
+    "stock": 50,
+    "sku": "SKU12345",
+    "category_id": 1,
+    "manufacturer": "Manufacturer Name",
+    "image_url": "images/image123.jpg",
+    "discount": 0.5,
+    "description": "Product description"
+  },
+  "update_non_existing_product": {
+    "name": "NonExistingProduct",
+    "price": 9.99,
+    "stock": 50,
+    "sku": "SKU99999",
+    "category_id": 1,
+    "manufacturer": "Manufacturer Name",
+    "image_url": "images/image123.jpg",
+    "discount": 0.5,
+    "description": "This product does not exist"
+  }
+}

@@ -14,11 +14,11 @@
            <class name="tests.US09_ViewFavoritesTests"> </class>-->
            <class name="tests.US10_AddFavoritesTests"> </class>-->
            <class name="tests.US11_DeleteFavoritesTests"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
+<!--           <class name="tests.US12_BrowseProducts"> </class>-->
+<!--           <class name="tests.US13_View_details"> </class>-->
+<!--           <class name="tests.US14_Createproduct"> </class>-->
+<!--           <class name="tests.US15_Updateproduct"> </class>-->
+<!--           <class name="tests.US16_Deleteproduct"> </class>-->
            <class name="tests.US17_BrowseAllStores"> </class>
            <class name="tests.US18_ViewStoreDetails"> </class>
            <class name="tests.US19_CreateNewStore"> </class>
