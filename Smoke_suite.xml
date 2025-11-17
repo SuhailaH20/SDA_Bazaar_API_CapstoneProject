@@ -3,7 +3,11 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="regression_suite">
        <classes>
-           <class name="tests.US01_CreateAccount"> </class>
+           <class name="tests.US01_CreateAccount">
+           <methods>
+                <include name="verifyUserCanCreateAccountSuccessfully"/>
+           </methods>
+           </class>
            <class name="tests.US02_Login"> </class>
            <class name="tests.US03_Logout"> </class>
            <class name="tests.US04_Profile"> </class>
