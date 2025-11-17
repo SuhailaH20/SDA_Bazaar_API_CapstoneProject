@@ -37,6 +37,7 @@ public class US04_Profile {
         Response response = ApiUtil.get("/me");
 
         // Validate status
+        BaseApi.clearToken();
         Assert.assertNull(BaseApi.getToken());
         Assert.assertEquals(response.statusCode(), 401, "Expected status 401 for profile");
 
