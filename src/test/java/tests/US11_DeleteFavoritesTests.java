@@ -31,7 +31,7 @@ public class US11_DeleteFavoritesTests {
     public void TC11_01_deleteExistingFavorite() {
         Response response = given()
                 .spec(spec)
-                .delete("/favorites/399");
+                .delete("/favorites/1958");
         response.prettyPrint();
 
         Assert.assertEquals(response.statusCode(), 200);
@@ -54,7 +54,7 @@ public class US11_DeleteFavoritesTests {
     @Test
     public void TC11_03_deleteSameFavoriteTwice() {
 
-        given().spec(spec).delete("/favorites/399");
+        given().spec(spec).delete("/favorites/1958");
 
         Response response = given().spec(spec).delete("/favorites/212");
         response.prettyPrint();

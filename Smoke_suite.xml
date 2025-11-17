@@ -45,9 +45,21 @@
                <include name="TC003_clearWithoutToken"/>
            </methods>
            </class>
-           <class name="tests.US09_ViewFavoritesTests"> </class>
-           <class name="tests.US10_AddFavoritesTests"> </class>
-           <class name="tests.US11_DeleteFavoritesTests"> </class>
+           <class name="tests.US09_ViewFavoritesTests">
+               <methods>
+                   <include name="TC09_03_verifyRequiredFields"/>
+               </methods>
+           </class>
+           <class name="tests.US10_AddFavoritesTests">
+               <methods>
+                   <include name="TC10_01_addNewProduct"/>
+               </methods>
+           </class>
+           <class name="tests.US11_DeleteFavoritesTests">
+               <methods>
+                   <include name="TC11_01_deleteExistingFavorite"/>
+               </methods>
+           </class>
 <!--           <class name="tests.US01_CreateAccount"> </class>-->
 <!--           <class name="tests.US01_CreateAccount"> </class>-->
 <!--           <class name="tests.US01_CreateAccount"> </class>-->

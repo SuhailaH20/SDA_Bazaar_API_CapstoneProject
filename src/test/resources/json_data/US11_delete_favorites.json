@@ -1,5 +1,5 @@
 {
-  "existing_favorite": { "product_id": 399 },
+  "existing_favorite": { "product_id": 1958 },
   "non_existing_favorite": { "product_id": 99999 },
-  "to_delete_twice": { "product_id": 399 }
+  "to_delete_twice": { "product_id": 1958 }
 }
