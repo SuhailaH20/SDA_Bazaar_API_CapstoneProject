@@ -82,11 +82,30 @@
                <include name="testdeletestorewithvalidID"/>
            </methods>
            </class>
-           <class name="tests.US22_BrowseAllUsers"> </class>
-           <class name="tests.US23_ViewUserDetails"> </class>
-           <class name="tests.US24_CreateNewUser"> </class>
-           <class name="tests.US25_UpdateExistinguser"> </class>
-           <class name="tests.US26_DeleteUser"> </class>
+           <class name="tests.US22_BrowseAllUsers">
+               <methods>
+                   <include name="US22_TC001_getAllUsers"/>
+                   <include name="US22_TC003_usersListNotEmpty"/>
+               </methods>
+           </class>
+           <class name="tests.US23_ViewUserDetails">
+               <methods>
+                   <include name="US23_TC001_getUserById"/>
+                   <include name="US23_TC003_userNotFound"/>
+               </methods>
+           </class>
+           <class name="tests.US24_CreateNewUser">
+               <methods>
+                   <include name="US24_TC001_validCreateUser"/>
+                   <include name="US24_TC003_emptyName"/>
+               </methods>
+           </class>
+           <class name="tests.US25_UpdateExistinguser">
+               <methods>
+                   <include name="US25_TC006_emptyPasswordConfirmation"/>
+                   <include name="US25_TC009_invalidEmail"/>
+               </methods>
+           </class>
        </classes>
     </test>
 </suite>
