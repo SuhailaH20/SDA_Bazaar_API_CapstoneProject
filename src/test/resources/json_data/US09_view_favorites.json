@@ -1,0 +1,66 @@
+{
+  "valid_user_with_favorites": [
+    {
+      "id": 1908,
+      "user_id": 1,
+      "product_id": 1908,
+      "created_at": "2025-11-13T17:15:35.000000Z",
+      "updated_at": "2025-11-13T17:15:35.000000Z",
+      "product": {
+        "id": 1908,
+        "name": "Laptop",
+        "description": "<p>XYZ</p>",
+        "price": "800.00",
+        "stock": 100,
+        "sku": "123A",
+        "category_id": 1,
+        "manufacturer": "XYZ",
+        "image_url": "images/1763054135.png",
+        "discount": "50.00"
+      }
+    },
+    {
+      "id": 399,
+      "user_id": 1,
+      "product_id": 399,
+      "created_at": "2025-10-23T20:52:27.000000Z",
+      "updated_at": "2025-11-13T18:01:45.000000Z",
+      "product": {
+        "id": 399,
+        "name": "Flower",
+        "description": "<p>Artificial Flower</p>",
+        "price": "400.00",
+        "stock": 50,
+        "sku": "FL123",
+        "category_id": 2,
+        "manufacturer": "Flower Heaven",
+        "image_url": "images/1761252747.png",
+        "discount": "0.00"
+      }
+    }
+  ],
+  "user_no_favorites": [],
+  "verify_required_fields": [
+    {
+      "id": 211,
+      "user_id": 1,
+      "product_id": 211,
+      "created_at": "2025-09-01T09:02:56.000000Z",
+      "updated_at": "2025-11-09T09:37:17.000000Z",
+      "product": {
+        "id": 211,
+        "name": "E-Book Reader",
+        "description": "<p>E-Ink screen, Android OS</p>",
+        "price": "300.00",
+        "stock": 100,
+        "sku": "3945165",
+        "category_id": 1,
+        "manufacturer": "AKT",
+        "image_url": "images/1756717376.png",
+        "discount": "0.00"
+      }
+    }
+  ],
+  "no_token": {}
+}
+

@@ -1,0 +1,12 @@
+{
+  "valid_product": {
+    "product_id": 1958
+  },
+  "duplicate_product": {
+    "product_id": 1958
+  },
+  "missing_product_id": {},
+  "non_existing_product": {
+    "product_id": 99999
+  }
+}

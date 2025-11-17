@@ -11,9 +11,9 @@
            <class name="tests.US06_ViewCartTests"> </class>
            <class name="tests.US07_RemoveProductFromCartTests"> </class>
            <class name="tests.US08_ClearCartTests"> </class>
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
+           <class name="tests.US09_ViewFavoritesTests"> </class>-->
+           <class name="tests.US10_AddFavoritesTests"> </class>-->
+           <class name="tests.US11_DeleteFavoritesTests"> </class>-->
 <!--           <class name="tests.US01_CreateAccount"> </class>-->
 <!--           <class name="tests.US01_CreateAccount"> </class>-->
 <!--           <class name="tests.US01_CreateAccount"> </class>-->
