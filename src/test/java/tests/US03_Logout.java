@@ -1,6 +1,5 @@
 package tests;
 
-import base_urls.BaseApi;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,17 +12,17 @@ public class US03_Logout {
     @Test(description = "[US03_TC001] Verify successful logout")
     public void testSuccessfulLogout() {
 
-        System.out.println(BaseApi.getToken());
+        System.out.println(ApiUtil.getToken());
 
         // If no token exists, login first
-        if (BaseApi.getToken() == null) {
-            String token = BaseApi.loginAndGetToken("sara@example.com", "Pass123!");
-            BaseApi.setToken(token);
+        if (ApiUtil.getToken() == null) {
+            String token = ApiUtil.loginAndGetToken("sara@example.com", "Pass123!");
+            ApiUtil.setToken(token);
         }
-        System.out.println(BaseApi.getToken());
+        System.out.println(ApiUtil.getToken());
 
         // Ensure token exists before logout
-        String tokenBefore = BaseApi.getToken();
+        String tokenBefore = ApiUtil.getToken();
         Assert.assertNotNull(tokenBefore, "Token should exist before logout!");
 
         // Send POST /logout
@@ -37,11 +36,11 @@ public class US03_Logout {
         Assert.assertTrue(message.contains("Successfully"), "Logout message mismatch!");
 
         System.out.println("Logout Response: " + message);
-        System.out.println(BaseApi.getToken());
+        System.out.println(ApiUtil.getToken());
 
         // Remove token so next calls don’t use old token
-        BaseApi.clearToken();
-        System.out.println(BaseApi.getToken());
+        ApiUtil.clearToken();
+        System.out.println(ApiUtil.getToken());
 
     }
 
@@ -49,8 +48,8 @@ public class US03_Logout {
     @Test(description = "[US03_TC002] Verify logout without token returns Unauthenticated")
     public void testLogoutWithoutToken() {
 
-        BaseApi.clearToken();
-        Assert.assertNull(BaseApi.getToken(), "Token should NOT exist before logout!");
+        ApiUtil.clearToken();
+        Assert.assertNull(ApiUtil.getToken(), "Token should NOT exist before logout!");
 
         Response response = ApiUtil.post("/logout", new HashMap<>());
 

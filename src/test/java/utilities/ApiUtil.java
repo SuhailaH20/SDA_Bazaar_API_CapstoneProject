@@ -3,7 +3,7 @@ package utilities;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
-import base_urls.BaseApi;
+import base_urls.apiBazaar;
 import io.restassured.specification.RequestSpecification;
 
 public class ApiUtil {
@@ -25,6 +25,10 @@ public class ApiUtil {
 
     public static void setToken(String authToken) {
         token = authToken;
+    }
+
+    public static void clearToken() {
+        token = null;
     }
 
     public static String getToken() {
@@ -50,9 +54,7 @@ public class ApiUtil {
     }
 
     public static Response get(String endpoint) {
-        return given()
-                .spec(BaseApi.spec())
-                .get(endpoint);
+        return getAuthRequestSpec().get(endpoint);
     }
 
     public static Response getWithAuth(String endpoint, String customToken) {
@@ -69,23 +71,16 @@ public class ApiUtil {
     }
 
     public static Response post(String endpoint, Object body) {
-        return given()
-                .spec(BaseApi.spec())
-                .body(body)
-                .post(endpoint);
+        return getAuthRequestSpec().body(body).post(endpoint);
     }
 
     public static Response put(String endpoint, Object body) {
-        return given()
-                .spec(BaseApi.spec())
-                .body(body)
-                .put(endpoint);
+        return getAuthRequestSpec().body(body).post(endpoint);
     }
 
     public static Response delete(String endpoint) {
-        return given()
-                .spec(BaseApi.spec())
-                .delete(endpoint);
+        return getAuthRequestSpec().delete(endpoint);
+
     }
 
     // Verify status code

@@ -1,6 +1,5 @@
 package tests;
 
-import base_urls.BaseApi;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -30,8 +29,8 @@ public class US02_Login {
         System.out.println("Login successful. Token: " + token);
 
         // Save the token so logout will work
-        BaseApi.setToken(token);
-        System.out.println(BaseApi.getToken());
+        ApiUtil.setToken(token);
+        System.out.println(ApiUtil.getToken());
     }
 
 
