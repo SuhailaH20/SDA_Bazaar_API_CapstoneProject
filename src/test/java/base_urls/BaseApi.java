@@ -20,11 +20,15 @@ public class BaseApi {
 
     // ---------------- Token Handling ----------------
 
-    // Return token ONLY if it exists — do NOT auto-login here
     public static String getToken() {
+        if (token == null) {
+            token = loginAndGetToken(
+                    ConfigReader.getAdminEmail(),
+                    ConfigReader.getDefaultPassword()
+            );
+        }
         return token;
     }
-
 
     public static String loginAndGetToken(String email, String password) {
         Map<String, Object> body = new HashMap<>();
