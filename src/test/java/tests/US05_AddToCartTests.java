@@ -20,7 +20,7 @@ public class US05_AddToCartTests {
     @BeforeClass
     public void setup() {
         spec = apiBazaar.spec(
-                ConfigReader.getStoreManagerEmail(),
+                ConfigReader.getCustomerEmail(),
                 ConfigReader.getDefaultPassword()
         );
 

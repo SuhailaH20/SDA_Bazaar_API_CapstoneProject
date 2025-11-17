@@ -17,7 +17,7 @@ public class US08_ClearCartTests {
     @BeforeClass
     public void setup() {
         spec = apiBazaar.spec(
-                ConfigReader.getStoreManagerEmail(),
+                ConfigReader.getCustomerEmail(),
                 ConfigReader.getDefaultPassword()
         );
     }

@@ -17,7 +17,7 @@ public class US07_RemoveProductFromCartTests {
     @BeforeClass
     public void setup() {
         spec = apiBazaar.spec(
-                ConfigReader.getStoreManagerEmail(),
+                ConfigReader.getCustomerEmail(),
                 ConfigReader.getDefaultPassword()
         );
     }
