@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import static io.restassured.RestAssured.given;
 
-public class US005_AddToCartTests {
+public class US05_AddToCartTests {
 
     RequestSpecification spec;
     JsonNode data;
@@ -116,7 +116,7 @@ public class US005_AddToCartTests {
     }
 
     @Test
-    public void TC008_quantityZero() {
+    public void Bug_TC008_quantityZero() {
         JsonNode payload = data.get("qty_zero");
 
         Response response = given()
@@ -132,7 +132,7 @@ public class US005_AddToCartTests {
     }
 
     @Test
-    public void TC009_quantityNegative() {
+    public void Bug_TC009_quantityNegative() {
         JsonNode payload = data.get("qty_negative");
 
         Response response = given()
@@ -148,7 +148,7 @@ public class US005_AddToCartTests {
     }
 
     @Test
-    public void TC010_quantityString() {
+    public void Bug_TC010_quantityString() {
         JsonNode payload = data.get("qty_string");
 
         Response response = given()
@@ -161,7 +161,7 @@ public class US005_AddToCartTests {
     }
 
     @Test
-    public void TC011_quantityNull() {
+    public void Bug_TC011_quantityNull() {
         JsonNode payload = data.get("qty_null");
 
         Response response = given()

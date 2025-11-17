@@ -8,7 +8,7 @@ import utilities.ApiUtil;
 
 import java.util.HashMap;
 
-public class US003_Logout {
+public class US03_Logout {
 
     @Test(description = "[US03_TC001] Verify successful logout")
     public void testSuccessfulLogout() {

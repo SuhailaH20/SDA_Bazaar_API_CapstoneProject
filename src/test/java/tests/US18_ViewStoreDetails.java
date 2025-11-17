@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 
-public class US018_ViewStoreDetails extends apiBazaar {
+public class US18_ViewStoreDetails extends apiBazaar {
     public static int StoreID;
     @BeforeClass//run befor class to get first store id
     public void setup() {

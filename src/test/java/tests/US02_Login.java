@@ -9,7 +9,7 @@ import utilities.ApiUtil;
 import java.util.HashMap;
 import java.util.Map;
 
-public class US002_Login {
+public class US02_Login {
 
     @Test(description = "[US02_TC001] Verify successful login")
     public void testSuccessfulLogin() {

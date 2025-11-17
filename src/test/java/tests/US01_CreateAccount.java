@@ -9,7 +9,7 @@ import utilities.ApiUtil;
 import java.util.HashMap;
 import java.util.Map;
 
-public class US001_CreateAccount {
+public class US01_CreateAccount {
 
     Faker faker = new Faker();
 

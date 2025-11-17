@@ -10,7 +10,7 @@ import utilities.ConfigReader;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class US021_DeleteStore extends apiBazaar {
+public class US21_DeleteStore extends apiBazaar {
     public static int StoreID;
     @BeforeMethod//run befor class to get first store id
     public void setup() {

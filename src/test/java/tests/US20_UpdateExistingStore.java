@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static utilities.ObjectMapperUtils.*;
 
-public class US020_UpdateExistingStore extends apiBazaar {//#2Bug
+public class US20_UpdateExistingStore extends apiBazaar {//#2Bug
     public static int StoreID;
     @BeforeClass//run befor class to get first store id
     public void setup() {
