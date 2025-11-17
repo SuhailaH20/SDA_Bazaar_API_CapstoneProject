@@ -31,6 +31,7 @@ public class US02_Login {
 
         // Save the token so logout will work
         BaseApi.setToken(token);
+        System.out.println(BaseApi.getToken());
     }
 
 
