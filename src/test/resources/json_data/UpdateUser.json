@@ -1,0 +1,18 @@
+{
+  "user1": {
+  "name": "@#%^",
+  "email": "Rajja@test.com",
+  "password": "Pass123#",
+  "password_confirmation": "Pass123#",
+  "role": "store_management"
+
+  },
+
+  "user2": {
+  "name": "Lena1",
+  "email": "Lena1@test.com",
+  "password": "Pass123#",
+  "password_confirmation": "Pass123#",
+  "role": "customer"
+}
+  }

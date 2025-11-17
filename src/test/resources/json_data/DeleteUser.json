@@ -1,0 +1,14 @@
+{
+  "customer": {
+    "email": "Lena1@test.com"
+  },
+  "store_manager": {
+    "email": "Rajja@test.com"
+  },
+  "admin_user": {
+    "email": "Lama1@test.com"
+},
+"nonAdmin_User": {
+"email": "Smaa@test.com"
+}
+}
