@@ -33,10 +33,10 @@ public class US04_Profile {
     public void testRetrieveCurrentUserProfilewitoutToken() {
 
         // Call GET /profile using ApiUtil (BaseApi adds token automatically)
+        ApiUtil.clearToken();
         Response response = ApiUtil.get("/me");
 
         // Validate status
-        ApiUtil.clearToken();
         Assert.assertNull(ApiUtil.getToken());
         Assert.assertEquals(response.statusCode(), 401, "Expected status 401 for profile");
 
