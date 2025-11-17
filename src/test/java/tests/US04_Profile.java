@@ -1,6 +1,5 @@
 package tests;
 
-import base_urls.BaseApi;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,9 +10,9 @@ public class US04_Profile {
     @Test(description = "[US04_TC001] Retrieve current user profile with valid token")
     public void testRetrieveCurrentUserProfile() {
         // If no token exists, login first
-        if (BaseApi.getToken() == null) {
-            String token = BaseApi.loginAndGetToken("sara@example.com", "Pass123!");
-            BaseApi.setToken(token);
+        if (ApiUtil.getToken() == null) {
+            String token = ApiUtil.loginAndGetToken("sara@example.com", "Pass123!");
+            ApiUtil.setToken(token);
         }
 
         // Call GET /profile using ApiUtil (BaseApi adds token automatically)
@@ -37,8 +36,8 @@ public class US04_Profile {
         Response response = ApiUtil.get("/me");
 
         // Validate status
-        BaseApi.clearToken();
-        Assert.assertNull(BaseApi.getToken());
+        ApiUtil.clearToken();
+        Assert.assertNull(ApiUtil.getToken());
         Assert.assertEquals(response.statusCode(), 401, "Expected status 401 for profile");
 
         System.out.println("Profile Response: " + response.asString());
