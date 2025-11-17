@@ -10,7 +10,7 @@ import utilities.ConfigReader;
 
 import static io.restassured.RestAssured.given;
 
-public class US008_ClearCartTests {
+public class US06_ViewCartTests {
 
     RequestSpecification spec;
 
@@ -22,56 +22,62 @@ public class US008_ClearCartTests {
         );
     }
 
-    // ------------------ TC001 ------------------
+    // -------------------------- TC001 --------------------------
     @Test
-    public void TC001_clearCartWithItems() {
+    public void Bug_TC001_viewCartWithItems() {
         Response response = given()
                 .spec(spec)
-                .accept("application/json")
-                .delete("/cart/clear");
+                .get("/cart");
         response.prettyPrint();
 
         Assert.assertEquals(response.statusCode(), 200);
         Assert.assertTrue(response.jsonPath().getBoolean("success"));
     }
 
-    // ------------------ TC002 ------------------
+    // -------------------------- TC002 --------------------------
     @Test
-    public void TC002_clearEmptyCart() {
-        // Run clear twice — 2nd clear tests empty cart
-        given().spec(spec).delete("/cart/clear");
-
+    public void Bug_TC002_viewEmptyCart() {
         Response response = given()
                 .spec(spec)
-                .accept("application/json")
-                .delete("/cart/clear");
+                .get("/cart");
         response.prettyPrint();
 
         Assert.assertEquals(response.statusCode(), 200);
         Assert.assertTrue(response.jsonPath().getBoolean("success"));
     }
 
-    // ------------------ TC003 ------------------
+    // -------------------------- TC004 --------------------------
     @Test
-    public void TC003_clearWithoutToken() {
+    public void TC004_expiredToken() {
         Response response = given()
+                .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhemFhcnN0b3Jlcy5jb20vYXBpL2xvZ2luIiwiaWF0IjoxNzYzMzAyNjQ4LCJleHAiOjE3NjMzMDYyNDgsIm5iZiI6MTc2MzMwMjY0OCwianRpIjoiVnI4VndTTmZ4Q3lLV0ZoNCIsInN1YiI6IjM1MiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.4MRS_LDzNNh2m5XkYiqtAopEbxDnDkrfA16QD0YofA2")
                 .accept("application/json")
-                .delete(ConfigReader.getApiBaseUrl() + "/cart/clear");
+                .get(ConfigReader.getApiBaseUrl() + "/cart");
         response.prettyPrint();
 
         Assert.assertEquals(response.statusCode(), 401);
     }
 
-    // ------------------ TC004 ------------------
+    // -------------------------- TC005 --------------------------
     @Test
-    public void TC004_tamperedToken() {
+    public void TC005_noToken() {
+        Response response = given()
+                .accept("application/json")
+                .get(ConfigReader.getApiBaseUrl() + "/cart");
+        response.prettyPrint();
+
+        Assert.assertEquals(response.statusCode(), 401);
+    }
+
+    // -------------------------- TC006 --------------------------
+    @Test
+    public void TC006_tamperedToken() {
         Response response = given()
                 .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2JhemFhcnN0b3Jlcy5jb20vYXBpL2xvZ2luIiwiaWF0IjoxNzYzMzAyNjQ4LCJleHAiOjE3NjMzMDYyNDgsIm5iZiI6MTc2MzMwMjY0OCwianRpIjoiVnI4VndTTmZ4Q3lLV0ZoNCIsInN1YiI6IjM1MiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.4MRS_LDzNNh2m5XkYiqtAopEbxDnDkrfA16QD0YofAk")
                 .accept("application/json")
-                .delete(ConfigReader.getApiBaseUrl() + "/cart/clear");
+                .get(ConfigReader.getApiBaseUrl() + "/cart");
         response.prettyPrint();
 
         Assert.assertEquals(response.statusCode(), 401);
     }
 }
-

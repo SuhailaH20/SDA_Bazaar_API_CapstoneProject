@@ -10,7 +10,7 @@ import utilities.ConfigReader;
 
 import static io.restassured.RestAssured.given;
 
-public class US007_RemoveProductFromCartTests {
+public class US07_RemoveProductFromCartTests {
 
     RequestSpecification spec;
 
@@ -45,7 +45,7 @@ public class US007_RemoveProductFromCartTests {
 
     // ------------------ TC003 ------------------
     @Test
-    public void TC003_removeProductNotInCart() {
+    public void Bug_TC003_removeProductNotInCart() {
         Response response = given().spec(spec).delete("/cart/55");
         response.prettyPrint();
 
@@ -65,7 +65,7 @@ public class US007_RemoveProductFromCartTests {
 
     // ------------------ TC005 ------------------
     @Test
-    public void TC005_negativeID() {
+    public void Bug_TC005_negativeID() {
         Response response = given().spec(spec).delete("/cart/-1");
         response.prettyPrint();
 
@@ -75,7 +75,7 @@ public class US007_RemoveProductFromCartTests {
 
     // ------------------ TC006 ------------------
     @Test
-    public void TC006_missingIDInPath() {
+    public void Bug_TC006_missingIDInPath() {
         Response response = given().spec(spec).delete("/cart/");
         response.prettyPrint();
 
@@ -84,7 +84,7 @@ public class US007_RemoveProductFromCartTests {
 
     // ------------------ TC007 ------------------
     @Test
-    public void TC007_removeProductTwice() {
+    public void Bug_TC007_removeProductTwice() {
         // First removal (should succeed)
         given().spec(spec).delete("/cart/49");
 

@@ -1,4 +1,4 @@
-package tests.Admin_Users;
+package tests;
 
 import base_urls.apiBazaar;
 import com.fasterxml.jackson.databind.node.ObjectNode;

@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static utilities.ObjectMapperUtils.*;
 
-public class US019_CreateNewStore extends apiBazaar {//1#BUG
+public class US19_CreateNewStore extends apiBazaar {//1#BUG
 
 //[US19_TC001]
     @Test

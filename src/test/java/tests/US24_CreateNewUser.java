@@ -1,4 +1,4 @@
-package tests.Admin_Users;
+package tests;
 
 
 import com.fasterxml.jackson.databind.JsonNode;
