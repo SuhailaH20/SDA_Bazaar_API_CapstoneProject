@@ -30,7 +30,7 @@ public class US25_UpdateExistinguser extends apiBazaar {
 
         JsonPath json = response.jsonPath();
 
-        userID_1 = json.getInt("find { it.email == 'Rajja@test.com' }.id");
+       // userID_1 = json.getInt("find { it.email == 'Rajja@test.com' }.id");
         userID_2 = json.getInt("find { it.email == 'Lena1@test.com' }.id");
 
         System.out.println("Fetched userID_1 → " + userID_1);
