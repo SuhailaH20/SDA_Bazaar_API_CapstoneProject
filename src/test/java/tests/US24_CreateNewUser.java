@@ -27,7 +27,7 @@ public class US24_CreateNewUser {
 
     // US24_TC001 - Create user with valid data (BUG: returns 500)
     @Test (priority =1)
-    public void US24BUG_TC001_validCreateUser() { //*
+    public void US24_TC001_validCreateUser() { //*
 
         ObjectNode payload = getBasePayload();
         payload.put("name", "Lena1");
