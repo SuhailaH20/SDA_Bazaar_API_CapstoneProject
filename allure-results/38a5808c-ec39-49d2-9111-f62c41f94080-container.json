@@ -1,0 +1,1 @@
+{"uuid":"38a5808c-ec39-49d2-9111-f62c41f94080","name":"tests.US16_Deleteproduct","children":["ad32ac5d-723c-4816-abc4-672bd17464ca"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1763400470332,"stop":1763400474818}],"afters":[],"start":1763400470296,"stop":1763400489646}
