@@ -1,1 +1,0 @@
-{"uuid":"f9942a16-3a8d-4963-8228-76f68c636441","name":"tests.US07_RemoveProductFromCartTests","children":["da16c5fd-a319-4ba6-a9b0-c9ad00a7e6f6"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1763488956498,"stop":1763488957390}],"afters":[],"start":1763488946451,"stop":1763489003057}
