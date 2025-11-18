@@ -57,4 +57,60 @@ public class US03_Logout {
         Assert.assertEquals(response.jsonPath().getString("message"), "Unauthenticated.");
     }
 
+    @Test(description = "[US03_TC003] Validate logout with invalid token format")
+    public void testLogoutWithInvalidTokenFormat() {
+
+        // Set an invalid token (malformed)
+        ApiUtil.setToken("12345-invalid-token");
+
+        Response response = ApiUtil.post("/logout", new HashMap<>());
+
+        Assert.assertEquals(response.statusCode(), 401, "Invalid token should return 401");
+        Assert.assertTrue(response.asString().contains("Unauthenticated"), "Expected Unauthenticated response");
+    }
+
+    @Test(description = "[US03_TC004] Validate logout twice returns Unauthenticated")
+    public void testLogoutTwice() {
+
+        // Step 1 — login
+        String token = ApiUtil.loginAndGetToken("sara@example.com", "Pass123!");
+        ApiUtil.setToken(token);
+
+        // Step 2 — first logout (expected success)
+        Response first = ApiUtil.post("/logout", new HashMap<>());
+        Assert.assertEquals(first.statusCode(), 200);
+
+        // Step 3 — second logout with same token (should be rejected)
+        Response second = ApiUtil.post("/logout", new HashMap<>());
+        Assert.assertEquals(second.statusCode(), 401);
+        Assert.assertTrue(second.asString().contains("Unauthenticated"));
+
+        ApiUtil.clearToken();
+    }
+
+    @Test(description = "[US03_TC005] Validate logout using token from another user")
+    public void testLogoutWithDifferentUserToken() {
+
+        // Login as User A
+        String tokenA = ApiUtil.loginAndGetToken("sara@example.com", "Pass123!");
+        ApiUtil.setToken(tokenA);
+        ApiUtil.post("/logout", new HashMap<>()); // logout A
+
+        // Login as User B
+        String tokenB = ApiUtil.loginAndGetToken("customer@sda.com", "Password.12345");
+
+        // Try to logout using User A token (should fail)
+        ApiUtil.setToken(tokenA);
+
+        Response response = ApiUtil.post("/logout", new HashMap<>());
+
+        Assert.assertEquals(response.statusCode(), 401);
+        Assert.assertTrue(response.asString().contains("Unauthenticated"));
+
+        ApiUtil.setToken(tokenB); // cleanup
+        ApiUtil.post("/logout", new HashMap<>());
+        ApiUtil.clearToken();
+    }
+
+
 }
