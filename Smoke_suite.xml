@@ -131,6 +131,12 @@
                    <exclude name=".*"/>
                </methods>
            </class>
+           <class name="tests.US26_DeleteUser">
+               <methods>
+                   <include name="US26BUG_TC001_deleteCustomer"/>
+                   <exclude name=".*"/>
+               </methods>
+           </class>
        </classes>
     </test>
 </suite>
