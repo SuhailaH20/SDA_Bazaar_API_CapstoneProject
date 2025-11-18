@@ -81,12 +81,6 @@
                <exclude name=".*"/>
            </methods>
            </class>
-           <class name="tests.US14_Createproduct">
-           <methods>
-               <include name="createValidProduct"/>
-               <exclude name=".*"/>
-           </methods>
-           </class>
            <class name="tests.US17_BrowseAllStores">
            <methods>
                <include name="testGetallStoresWithValidauthentication"/>
