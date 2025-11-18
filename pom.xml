@@ -86,7 +86,7 @@
                 <configuration>
 
                     <suiteXmlFiles>
-                        <suiteXmlFile>regression_suite.xml</suiteXmlFile>
+                        <suiteXmlFile>Smoke_suite.xml</suiteXmlFile>
                     </suiteXmlFiles>
 
                 </configuration>
