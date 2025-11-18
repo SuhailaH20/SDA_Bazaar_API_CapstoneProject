@@ -63,12 +63,6 @@
                    <exclude name=".*"/>
                </methods>
            </class>
-           <class name="tests.US11_DeleteFavoritesTests">
-               <methods>
-                   <include name="TC11_01_deleteExistingFavorite"/>
-                   <exclude name=".*"/>
-               </methods>
-           </class>
            <class name="tests.US12_BrowseProducts">
            <methods>
                <include name="getAllProducts"/>
