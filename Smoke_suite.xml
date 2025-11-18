@@ -57,12 +57,6 @@
                    <exclude name=".*"/>
                </methods>
            </class>
-           <class name="tests.US10_AddFavoritesTests">
-               <methods>
-                   <include name="TC10_01_addNewProduct"/>
-                   <exclude name=".*"/>
-               </methods>
-           </class>
            <class name="tests.US12_BrowseProducts">
            <methods>
                <include name="getAllProducts"/>
