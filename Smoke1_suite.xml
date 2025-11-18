@@ -2,13 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="regression_suite">
-        <groups>
-            <run>
-                <include name="Smoke"/>
-            </run>
-        </groups>
        <classes>
-           <class name="tests.US01_CreateAccount"> </class>
+           <class name="tests.US01_CreateAccount">
+           <methods>
+               <include name="testSuccessfulRegistration"/>
+               <exclude name=".*"/>
+           </methods>
+           </class>
 <!--           <class name="tests.US02_Login"> </class>-->
 <!--           <class name="tests.US03_Logout"> </class>-->
 <!--           <class name="tests.US04_Profile"> </class>-->
