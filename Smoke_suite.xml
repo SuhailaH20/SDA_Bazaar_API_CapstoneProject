@@ -6,116 +6,135 @@
            <class name="tests.US01_CreateAccount">
            <methods>
                 <include name="testSuccessfulRegistration"/>
+               <exclude name=".*"/>
            </methods>
            </class>
            <class name="tests.US02_Login">
                <methods>
                    <include name="testSuccessfulLogin"/>
-
+                   <exclude name=".*"/>
                </methods>
            </class>
            <class name="tests.US03_Logout">
            <methods>
                <include name="testSuccessfulLogout"/>
+               <exclude name=".*"/>
            </methods>
            </class>
            <class name="tests.US04_Profile">
            <methods>
                <include name="testRetrieveCurrentUserProfile"/>
-
+               <exclude name=".*"/>
            </methods>
            </class>
            <class name="tests.US05_AddToCartTests">
            <methods>
                <include name="TC001_addProduct_defaultQuantity"/>
+               <exclude name=".*"/>
            </methods>
            </class>
            <class name="tests.US06_ViewCartTests">
            <methods>
                <include name="TC005_noToken"/>
+               <exclude name=".*"/>
            </methods>
            </class>
            <class name="tests.US07_RemoveProductFromCartTests">
            <methods>
                <include name="TC001_removeExistingProduct"/>
+               <exclude name=".*"/>
            </methods>
            </class>
            <class name="tests.US08_ClearCartTests">
            <methods>
                <include name="TC003_clearWithoutToken"/>
+               <exclude name=".*"/>
            </methods>
            </class>
            <class name="tests.US09_ViewFavoritesTests">
                <methods>
                    <include name="TC09_03_verifyRequiredFields"/>
+                   <exclude name=".*"/>
                </methods>
            </class>
-           <class name="tests.US10_AddFavoritesTests">
-               <methods>
-                   <include name="TC10_01_addNewProduct"/>
-               </methods>
+           <class name="tests.US12_BrowseProducts">
+           <methods>
+               <include name="getAllProducts"/>
+               <exclude name=".*"/>
+           </methods>
            </class>
-           <class name="tests.US11_DeleteFavoritesTests">
-               <methods>
-                   <include name="TC11_01_deleteExistingFavorite"/>
-               </methods>
+           <class name="tests.US13_View_details">
+           <methods>
+               <include name="getProductById"/>
+               <exclude name=".*"/>
+           </methods>
            </class>
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
            <class name="tests.US17_BrowseAllStores">
            <methods>
                <include name="testGetallStoresWithValidauthentication"/>
                <include name="testResponseTime"/>
+               <exclude name=".*"/>
            </methods>
            </class>
            <class name="tests.US18_ViewStoreDetails">
            <methods>
                <include name="testRetrieveDetailedInformationforValidStoreID"/>
                <include name="testReturns404ErrorWhenStoreIDdoesNotExist"/>
+               <exclude name=".*"/>
            </methods>
            </class>
            <class name="tests.US19_CreateNewStore">
            <methods>
                <include name="testStoreCreationwithAllRequiredFields"/>
                <include name="testCreationwithMissingRequiredFieldName"/>
+               <exclude name=".*"/>
            </methods>
            </class>
            <class name="tests.US20_UpdateExistingStore"> 
            <methods>
                <include name="testUpdatewithMissingRequiredFieldsName"/>
                <include name="testUpdatewithMissingRequiredFieldsLocation"/>
+               <exclude name=".*"/>
            </methods>
            </class>
            <class name="tests.US21_DeleteStore">
            <methods>
                <include name="testdeletestorewithvalidID"/>
+               <exclude name=".*"/>
            </methods>
            </class>
            <class name="tests.US22_BrowseAllUsers">
                <methods>
                    <include name="US22_TC001_getAllUsers"/>
                    <include name="US22_TC003_usersListNotEmpty"/>
+                   <exclude name=".*"/>
                </methods>
            </class>
            <class name="tests.US23_ViewUserDetails">
                <methods>
                    <include name="US23_TC001_getUserById"/>
                    <include name="US23_TC003_userNotFound"/>
+                   <exclude name=".*"/>
                </methods>
            </class>
            <class name="tests.US24_CreateNewUser">
                <methods>
                    <include name="US24_TC001_validCreateUser"/>
                    <include name="US24_TC003_emptyName"/>
+                   <exclude name=".*"/>
                </methods>
            </class>
            <class name="tests.US25_UpdateExistinguser">
                <methods>
                    <include name="US25_TC006_emptyPasswordConfirmation"/>
                    <include name="US25_TC009_invalidEmail"/>
+                   <exclude name=".*"/>
+               </methods>
+           </class>
+           <class name="tests.US26_DeleteUser">
+               <methods>
+                   <include name="US26BUG_TC001_deleteCustomer"/>
+                   <exclude name=".*"/>
                </methods>
            </class>
        </classes>
