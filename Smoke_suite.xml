@@ -60,11 +60,21 @@
                    <include name="TC11_01_deleteExistingFavorite"/>
                </methods>
            </class>
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
-<!--           <class name="tests.US01_CreateAccount"> </class>-->
+           <class name="tests.US12_BrowseProducts">
+           <methods>
+               <include name="getAllProducts"/>
+           </methods>
+           </class>
+           <class name="tests.US13_View_details">
+           <methods>
+               <include name="getProductById"/>
+           </methods>
+           </class>
+           <class name="tests.US14_Createproduct">
+           <methods>
+               <include name="createValidProduct"/>
+           </methods>
+           </class>
            <class name="tests.US17_BrowseAllStores">
            <methods>
                <include name="testGetallStoresWithValidauthentication"/>
