@@ -16,7 +16,7 @@ public class US01_CreateAccount {
     @Test(description = "[US01_TC001] Verify successful user registration")
     public void testSuccessfulRegistration() {
 
-        // Dynamic test data
+        // Dynamic test data 1
         String randomEmail = faker.internet().emailAddress();
         String randomName = faker.name().firstName();
 
