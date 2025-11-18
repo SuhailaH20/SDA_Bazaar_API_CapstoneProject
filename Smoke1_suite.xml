@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="regression_suite">
+        <groups>
+            <run>
+                <include name="Smoke"/>
+            </run>
+        </groups>
+       <classes>
+           <class name="tests.US01_CreateAccount"> </class>
+<!--           <class name="tests.US02_Login"> </class>-->
+<!--           <class name="tests.US03_Logout"> </class>-->
+<!--           <class name="tests.US04_Profile"> </class>-->
+<!--           <class name="tests.US05_AddToCartTests"> </class>-->
+<!--           <class name="tests.US06_ViewCartTests"> </class>-->
+<!--           <class name="tests.US07_RemoveProductFromCartTests"> </class>-->
+<!--           <class name="tests.US08_ClearCartTests"> </class>-->
+<!--           <class name="tests.US09_ViewFavoritesTests"> </class>-->
+<!--           <class name="tests.US10_AddFavoritesTests"> </class>-->
+<!--           <class name="tests.US11_DeleteFavoritesTests"> </class>-->
+<!--           <class name="tests.US12_BrowseProducts"> </class>-->
+<!--           <class name="tests.US13_View_details"> </class>-->
+<!--           <class name="tests.US14_Createproduct"> </class>-->
+<!--           <class name="tests.US15_Updateproduct"> </class>-->
+<!--           <class name="tests.US16_Deleteproduct"> </class>-->
+<!--           <class name="tests.US17_BrowseAllStores"> </class>-->
+<!--           <class name="tests.US18_ViewStoreDetails"> </class>-->
+<!--           <class name="tests.US19_CreateNewStore"> </class>-->
+<!--           <class name="tests.US20_UpdateExistingStore"> </class>-->
+<!--           <class name="tests.US21_DeleteStore"> </class>-->
+<!--           <class name="tests.US22_BrowseAllUsers"> </class>-->
+<!--           <class name="tests.US23_ViewUserDetails"> </class>-->
+<!--           <class name="tests.US24_CreateNewUser"> </class>-->
+<!--           <class name="tests.US25_UpdateExistinguser"> </class>-->
+<!--           <class name="tests.US26_DeleteUser"> </class>-->
+       </classes>
+    </test>
+</suite>

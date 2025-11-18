@@ -13,7 +13,7 @@ public class US01_CreateAccount {
 
     Faker faker = new Faker();
 
-    @Test(description = "[US01_TC001] Verify successful user registration")
+    @Test(description = "[US01_TC001] Verify successful user registration",groups = {"Smoke"})
     public void testSuccessfulRegistration() {
 
         // Dynamic test data
