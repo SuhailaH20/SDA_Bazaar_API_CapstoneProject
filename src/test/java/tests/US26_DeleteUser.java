@@ -36,9 +36,9 @@ public class US26_DeleteUser extends apiBazaar  {
             JsonPath json = response.jsonPath();
 
             customerID     = json.getInt("find { it.email == '" + getEmail("customer") + "' }.id");
-            storeManagerID = json.getInt("find { it.email == '" + getEmail("store_manager") + "' }.id");
-            adminID        = json.getInt("find { it.email == '" + getEmail("admin_user") + "' }.id");
-            nonAdminID     = json.getInt("find { it.email == '" + getEmail("nonAdmin_User") + "' }.id");
+            //storeManagerID = json.getInt("find { it.email == '" + getEmail("store_manager") + "' }.id");
+            //adminID        = json.getInt("find { it.email == '" + getEmail("admin_user") + "' }.id");
+            //nonAdminID     = json.getInt("find { it.email == '" + getEmail("nonAdmin_User") + "' }.id");
 
             System.out.println("Fetched Customer ID → " + customerID);
             System.out.println("Fetched Store Manager ID → " + storeManagerID);
