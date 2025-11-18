@@ -86,7 +86,7 @@
                 <configuration>
 
                     <suiteXmlFiles>
-                        <suiteXmlFile>Smoke_suite.xml</suiteXmlFile>
+                        <suiteXmlFile>Smoke1_suite.xml</suiteXmlFile>
                     </suiteXmlFiles>
 
                 </configuration>
