@@ -1,0 +1,1 @@
+{"uuid":"119ef885-26b4-45bb-be23-018e8ff93c75","name":"tests.US15_UpdateProduct_NewApproach","children":["e1a8336b-e546-4278-96df-2f0a94e4bfc6"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1763480816447,"stop":1763480820405}],"afters":[],"start":1763480816409,"stop":1763480822382}

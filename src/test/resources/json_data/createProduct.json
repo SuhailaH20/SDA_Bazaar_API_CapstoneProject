@@ -1,18 +1,7 @@
 {
   "valid_product": {
     "name": "Product Name",
-    "price": 9.99,
-    "stock": 100,
-    "sku": "SKU12345",
-    "category_id": 1,
-    "manufacturer": "Manufacturer Name",
-    "image_url": "images/image123.jpg",
-    "discount": 0.5,
-    "description": "Product description"
-  },
-  "missing_name_product": {
-    "name": "",
-    "price": 9.99,
+    "price": 9.969,
     "stock": 100,
     "sku": "SKU123245",
     "category_id": 1,
@@ -21,11 +10,15 @@
     "discount": 0.5,
     "description": "Product description"
   },
+  "missing_name_product": {
+    "name": ""
+
+  },
   "invalid_product": {
     "name": "key",
     "price": -9.99,
     "stock": -100,
-    "sku": "SKU15",
+    "sku": "SKU1293245",
     "category_id": 1,
     "manufacturer": "Manufacturer Name",
     "image_url": "images/image123.jpg",
@@ -44,15 +37,8 @@
     "description": "Product description"
   },
   "duplicate_sku_product": {
-    "name": "Product",
-    "price": 9.9679,
-    "stock": 1070,
-    "sku": "FL123",
-    "category_id": 1,
-    "manufacturer": "Manufacturer Name",
-    "image_url": "images/image123.jpg",
-    "discount": 0.5,
-    "description": "Product lldescription"
+
+    "sku": "3939"
   },
   "missing_price_product": {
     "name": "Product",

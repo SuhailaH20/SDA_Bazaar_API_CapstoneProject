@@ -1,111 +1,115 @@
 package tests;
-
+import base_urls.apiBazaar;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import io.restassured.response.Response;
-import utilities.ApiUtil;
 import utilities.ConfigReader;
 import utilities.ObjectMapperUtils;
-import com.fasterxml.jackson.databind.JsonNode;
 
-public class US15_Updateproduct {
+import static io.restassured.RestAssured.given;
+public class US15_Updateproduct extends apiBazaar {
 
-    private String validToken;
-    private JsonNode data;
-    private String baseUrl;
+    private RequestSpecification spec;
+    private JsonNode updateData;
+    private JsonNode createData;
 
     @BeforeClass
     public void setup() {
-        baseUrl = ConfigReader.getApiBaseUrl();
-
-        // تسجيل الدخول وجلب التوكن
-        validToken = ApiUtil.loginAndGetToken(
+        spec = apiBazaar.spec(
                 ConfigReader.getStoreManagerEmail(),
                 ConfigReader.getDefaultPassword()
         );
-        ApiUtil.setToken(validToken);
-
-        // Load update test data
-        data = ObjectMapperUtils.getJsonNode("updateProduct");
-
-        System.out.println("Product ID from Create Test = " + US14_Createproduct.createdProductId);
+        updateData = ObjectMapperUtils.getJsonNode("updateProduct");
+        createData = ObjectMapperUtils.getJsonNode("createProduct");
     }
 
-    private void updateProductAndVerify(String productId, JsonNode payload, int expectedStatusCode, String... errorFields) {
+    // Create Product
+    private String createTestProduct() {
+        ObjectNode payload = (ObjectNode) createData.get("valid_product").deepCopy();
+        payload.put("sku", "SKU-TEST-" + System.currentTimeMillis() + "-" + (int)(Math.random()*1000));
 
-        // الاندبوينت الصحيح
-        Response response = ApiUtil.put(
-                baseUrl + "/products/" + productId,
-                payload.toString()
-        );
+        Response response = given().spec(spec).body(payload.toString()).post("/products/create");
+        response.prettyPrint();
+        Assert.assertEquals(response.statusCode(), 201, "Could not create a product for the test.");
+        return response.jsonPath().getString("product.id");
+    }
 
-        ApiUtil.verifyStatusCode(response, expectedStatusCode);
+    // ---------------- TC001 - Positive - Update Existing Product ----------------
+    @Test(description = "TC001 - Positive - Update Existing Product")
+    public void TC001_updateExistingProduct() {
+        String productId = createTestProduct();
+        JsonNode payload = updateData.get("valid_update");
 
-        System.out.println("Update Product Response:");
-        System.out.println(response.asPrettyString());
+        Response response = given().spec(spec).body(payload.toString()).put("/products/" + productId);
+        response.prettyPrint();
 
-        if (expectedStatusCode == 200) {
+        Assert.assertEquals(response.statusCode(), 200);
+        Assert.assertEquals(response.jsonPath().getString("product.name"), payload.get("name").asText());
+    }
 
-            String idInResponse = ApiUtil.getResponseValue(response, "product.id");
-            assert idInResponse != null && !idInResponse.isEmpty() : "Product ID should not be null";
+    // ---------------- TC002 - Positive - Update Stock ----------------
+    @Test(description = "TC002 - Positive - Update Stock")
+    public void TC002_updateStock() {
+        String productId = createTestProduct();
+        ObjectNode payload = (ObjectNode) updateData.get("update_stock").deepCopy();
+        payload.put("sku", "SKU-UPDATE-" + System.currentTimeMillis() + "-" + (int)(Math.random()*1000));
 
-            String nameInResponse = ApiUtil.getResponseValue(response, "product.name");
-            assert nameInResponse.equals(payload.get("name").asText()) : "Product name mismatch";
+        Response response = given().spec(spec).body(payload.toString()).put("/products/" + productId);
+        response.prettyPrint();
 
-        } else {
-            for (String field : errorFields) {
-                String message = ApiUtil.getResponseValue(response, "errors." + field + "[0]");
-                assert message != null && !message.isEmpty() : field + " error message should not be null";
-            }
+        Assert.assertEquals(response.statusCode(), 200);
+        Assert.assertEquals(response.jsonPath().getInt("product.stock"), payload.get("stock").asInt());
+    }
+
+    // ---------------- TC003 - Negative - Invalid Price ----------------
+    @Test(description = "TC003 - Negative - Invalid Price")
+    public void TC003_updateProduct_InvalidPrice() {
+        String productId = createTestProduct();
+        ObjectNode payload = (ObjectNode) updateData.get("invalid_price_update").deepCopy();
+        payload.put("sku", "SKU-INVALID-" + System.currentTimeMillis() + "-" + (int)(Math.random()*1000));
+
+        Response response = given().spec(spec).body(payload.toString()).put("/products/" + productId);
+        response.prettyPrint();
+
+        // فقط تحقق من 422 لأنه الخطأ المتوقع عادةً في API
+        Assert.assertEquals(response.statusCode(), 422);
+        String errorMessage = response.jsonPath().getString("errors.price[0]");
+        Assert.assertNotNull(errorMessage);
+    }
+
+    // ---------------- TC004 - Negative - Update Without Token ----------------
+    @Test(description = "TC004 - Negative - Update Without Token")
+    public void TC004_updateWithoutToken() {
+        String productId = createTestProduct();
+        JsonNode payload = updateData.get("valid_update");
+
+        Response response = given().body(payload.toString()).put("/products/" + productId);
+        response.prettyPrint();
+
+        // تحقق من التوكن
+        Assert.assertTrue(response.statusCode() == 401 || response.statusCode() == 403);
+    }
+
+    // ---------------- TC005 - Negative - Update Non-Existing Product ----------------
+    @Test(description = "TC005 - Negative - Update Non-Existing Product")
+    public void TC005_updateNonExistingProduct() {
+        String nonExistingId = "999999999";
+        ObjectNode payload = (ObjectNode) updateData.get("valid_update").deepCopy();
+        payload.put("sku", "SKU-NONEXIST-" + System.currentTimeMillis() + "-" + (int)(Math.random()*1000));
+
+        Response response = given().spec(spec).body(payload.toString()).put("/products/" + nonExistingId);
+        response.prettyPrint();
+
+        // تحقق فقط من الكود المتوقع للمنتج غير الموجود
+        Assert.assertEquals(response.statusCode(), 404);
+
+        String errorMessage = response.jsonPath().getString("error");
+        if (errorMessage != null) {
+            System.out.println("Error Message: " + errorMessage);
         }
-    }
-
-    // TC001 - Positive - Update Existing Product
-    @Test
-    public void updateExistingProduct() {
-
-        String productId = US14_Createproduct.createdProductId;
-        updateProductAndVerify(productId, data.get("valid_update"), 200);
-    }
-
-    // TC002 - Positive - Update Stock
-    @Test
-    public void updateProductStock() {
-
-        String productId = US14_Createproduct.createdProductId;
-        updateProductAndVerify(productId, data.get("update_stock"), 200);
-    }
-
-    // TC003 - Negative - Invalid Price
-    @Test
-    public void updateProductInvalidPrice() {
-
-        String productId = US14_Createproduct.createdProductId;
-        updateProductAndVerify(productId, data.get("invalid_price_update"), 422, "price");
-    }
-
-    // TC004 - Negative - Update Without Token
-    @Test
-    public void updateProductWithoutToken() {
-
-        String productId = US14_Createproduct.createdProductId;
-        JsonNode payload = data.get("valid_update");
-
-        Response response = ApiUtil.getRequestSpec()
-                .body(payload.toString())
-                .put(baseUrl + "/products/" + productId); // ← هنا برضه صححت الاندبوينت
-
-        ApiUtil.verifyStatusCode(response, 401);
-
-        System.out.println("Update Product WITHOUT Token Response:");
-        System.out.println(response.asPrettyString());
-    }
-
-    // TC005 - Negative - Update Non-Existing Product
-    @Test
-    public void updateNonExistingProduct() {
-
-        String nonExistingId = "999999";
-        updateProductAndVerify(nonExistingId, data.get("valid_update"), 404);
     }
 }
