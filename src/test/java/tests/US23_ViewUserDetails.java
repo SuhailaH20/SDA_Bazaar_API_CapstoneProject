@@ -22,7 +22,7 @@ public class US23_ViewUserDetails {
 
         ApiUtil.setToken(token);
 
-        int userId = 4517;
+        int userId = 353;
         Response response = ApiUtil.get("/users/" + userId);
         Assert.assertEquals(response.statusCode(), 200);
 
