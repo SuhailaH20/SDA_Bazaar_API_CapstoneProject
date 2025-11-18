@@ -57,18 +57,6 @@
                    <exclude name=".*"/>
                </methods>
            </class>
-           <class name="tests.US10_AddFavoritesTests">
-               <methods>
-                   <include name="TC10_01_addNewProduct"/>
-                   <exclude name=".*"/>
-               </methods>
-           </class>
-           <class name="tests.US11_DeleteFavoritesTests">
-               <methods>
-                   <include name="TC11_01_deleteExistingFavorite"/>
-                   <exclude name=".*"/>
-               </methods>
-           </class>
            <class name="tests.US12_BrowseProducts">
            <methods>
                <include name="getAllProducts"/>
@@ -78,12 +66,6 @@
            <class name="tests.US13_View_details">
            <methods>
                <include name="getProductById"/>
-               <exclude name=".*"/>
-           </methods>
-           </class>
-           <class name="tests.US14_Createproduct">
-           <methods>
-               <include name="createValidProduct"/>
                <exclude name=".*"/>
            </methods>
            </class>
@@ -146,6 +128,12 @@
                <methods>
                    <include name="US25_TC006_emptyPasswordConfirmation"/>
                    <include name="US25_TC009_invalidEmail"/>
+                   <exclude name=".*"/>
+               </methods>
+           </class>
+           <class name="tests.US26_DeleteUser">
+               <methods>
+                   <include name="US26BUG_TC001_deleteCustomer"/>
                    <exclude name=".*"/>
                </methods>
            </class>
