@@ -27,7 +27,6 @@ public class US15_Updateproduct extends apiBazaar {
         createData = ObjectMapperUtils.getJsonNode("createProduct");
     }
 
-    // Create Product
     private String createTestProduct() {
         ObjectNode payload = (ObjectNode) createData.get("valid_product").deepCopy();
         payload.put("sku", "SKU-TEST-" + System.currentTimeMillis() + "-" + (int)(Math.random()*1000));
