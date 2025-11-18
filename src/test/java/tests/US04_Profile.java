@@ -43,4 +43,37 @@ public class US04_Profile {
         System.out.println("Profile Response: " + response.asString());
     }
 
+    @Test(description = "[US04_TC003] Retrieve profile with malformed token")
+    public void testProfileWithMalformedToken() {
+
+        ApiUtil.setToken("abc!@#-not-a-real-token");
+
+        Response response = ApiUtil.get("/me");
+
+        Assert.assertEquals(response.statusCode(), 401);
+        Assert.assertTrue(response.asString().contains("Unauthenticated"));
+
+        ApiUtil.clearToken();
+    }
+
+    @Test(description = "[US04_TC004] Retrieve profile after logout")
+    public void testProfileAfterLogout() {
+
+        // Login → get token
+        String token = ApiUtil.loginAndGetToken("sara@example.com", "Pass123!");
+        ApiUtil.setToken(token);
+
+        // Logout
+        ApiUtil.post("/logout", new java.util.HashMap<>());
+
+        // Try to access profile after logout
+        Response response = ApiUtil.get("/me");
+
+        Assert.assertEquals(response.statusCode(), 401);
+        Assert.assertTrue(response.asString().contains("Unauthenticated"));
+
+        ApiUtil.clearToken();
+    }
+
+
 }
