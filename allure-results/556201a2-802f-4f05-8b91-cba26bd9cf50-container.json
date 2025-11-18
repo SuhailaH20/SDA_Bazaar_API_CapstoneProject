@@ -1,1 +1,0 @@
-{"uuid":"556201a2-802f-4f05-8b91-cba26bd9cf50","name":"tests.US21_DeleteStore.setup","children":["97b99aa2-973a-4955-8178-eb88f66f658f"],"description":"","befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1763450113207,"stop":1763450114449}],"afters":[],"start":1763450113207,"stop":1763450114449}
