@@ -20,7 +20,7 @@ public class US13_View_details {
     // TC001 - Positive - Get product by ID
     @Test
     public void getProductById() {
-        int productId = 1958;
+        int productId = 2975;
         String endpoint = "/products/" + productId;
 
         Response response = ApiUtil.get(endpoint);
