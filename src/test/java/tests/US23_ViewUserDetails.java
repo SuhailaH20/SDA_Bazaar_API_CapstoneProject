@@ -44,7 +44,7 @@ public class US23_ViewUserDetails {
                 ConfigReader.getDefaultPassword());
 
         ApiUtil.setToken(token);
-        int userId = 352;
+        int userId = 353;
         Response response = ApiUtil.get("/users/" + userId);
 
         Assert.assertEquals(response.statusCode(), 200);
