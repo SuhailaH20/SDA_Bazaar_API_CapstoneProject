@@ -30,8 +30,8 @@ public class US26_DeleteUser extends apiBazaar  {
         public void setup() {
 
             Response response = given(
-                    spec(ConfigReader.getAdminEmail(), ConfigReader.getDefaultPassword()))
-                    .get("/users");
+            spec(ConfigReader.getAdminEmail(), ConfigReader.getDefaultPassword()))
+            .get("/users");
 
             JsonPath json = response.jsonPath();
 
@@ -85,8 +85,8 @@ public class US26_DeleteUser extends apiBazaar  {
             }
 
             Response response = given(
-                    spec(ConfigReader.getAdminEmail(), ConfigReader.getDefaultPassword()))
-                    .delete("/users/" + storeManagerID);
+             spec(ConfigReader.getAdminEmail(), ConfigReader.getDefaultPassword()))
+             .delete("/users/" + storeManagerID);
 
             int status = response.statusCode();
             System.out.println("Status Code: " + status);
@@ -172,4 +172,28 @@ public class US26_DeleteUser extends apiBazaar  {
             Assert.assertEquals(status, 403);
             System.out.println("Correct → non-admin is restricted from deleting users.");
         }
+
+    // TC006 Cleanup unwanted users from API
+    @Test(priority = 6)
+    public void cleanupUser() {
+
+        String email = "Loma1@test.com";
+
+        // GET users
+        Response getRes = given(spec(ConfigReader.getAdminEmail(), ConfigReader.getDefaultPassword()))
+        .get("/users");
+
+        Integer userId = getRes.jsonPath().getInt("find{ it.email=='" + email + "' }.id");
+        System.out.println("Fetched User ID for cleanup → " + userId);
+
+        if (userId == null) {
+            System.out.println("User not found → " + email);
+            return;
+        }
+
+        // DELETE user
+        Response response = given(spec(ConfigReader.getAdminEmail(), ConfigReader.getDefaultPassword()))
+        .delete("/users/" + userId);
+        System.out.println("DELETE Status Code → " + response.statusCode());
+    }
     }

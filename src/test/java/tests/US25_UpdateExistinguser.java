@@ -100,7 +100,7 @@ public class US25_UpdateExistinguser extends apiBazaar {
         .get("/users/" + userID_1);
 
         String updatedEmail = verify.jsonPath().getString("email");
-        Assert.assertEquals(updatedEmail, "Ragga2@test.com");
+        Assert.assertEquals(updatedEmail, "Rajja2@test.com");
 
         System.out.println("-> TC02: Update email only");
         System.out.println("Verification from API:");
